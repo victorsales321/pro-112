@@ -1,0 +1,32 @@
+import os # leitura de pastas e arquivos , criar pastas
+import shutil # mover pastas e aarquivos , copiar
+
+from_dir = "C:/Users/Paulosae/Downloads"
+to_dir = "C:/Users/Paulosae/Downloads/vvitor"
+
+lista = os.listdir(from_dir)
+#print(lista)
+
+for nomedoarquivo in lista:
+
+    nome,ext = os.path.splitext(nomedoarquivo)
+    print(nome)
+    print(ext)
+
+    if ext == '':
+        continue
+    if ext in ['.txt','.doc','.docx','.pdf']:
+
+        path1 = from_dir + '/' + nomedoarquivo
+        path2 = to_dir + '/' + "Image_Files"
+        path3 = to_dir + '/' + "Image_Files" + '/' + nomedoarquivo
+
+        if os.path.exists(path2):
+            print("Moving" + nomedoarquivo + ".....")
+
+            shutil.move(path1,path3)
+
+        else:
+          os.makedirs(path2)
+          print("Moving" + nomedoarquivo + ".....")
+          shutil.move(path1,path3)
